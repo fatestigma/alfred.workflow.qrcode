@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jx.qrcode.alfred</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>7DFCF90F-545B-4395-8108-D78BF796C8F4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CDB582E9-97AC-4B89-AA66-272D123C134E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>D497400F-AC64-480E-9894-AFB95A8A6ED9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CDB582E9-97AC-4B89-AA66-272D123C134E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>JinXi</string>
+	<key>description</key>
+	<string>Generate QRcode with query or clipboard</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Generate QRcode</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.finder</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>7DFCF90F-545B-4395-8108-D78BF796C8F4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>set theQuery to "{query}"if theQuery = "" then	set _text to (get the clipboard)else	set _text to theQueryend ifset _path to do shell script "pwd"set openFile to open for access (_path &amp; "/text.txt") with write permissionset eof of openFile to 0write _text to openFile starting at eof as «class utf8»close access openFiletell application "Safari"	activate	make new document with properties {URL:"file://" &amp; _path &amp; "/index.html"}end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>CDB582E9-97AC-4B89-AA66-272D123C134E</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>qr</string>
+				<key>subtext</key>
+				<string>Generate QRcode for "{query}"</string>
+				<key>text</key>
+				<string>Generate QRcode</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D497400F-AC64-480E-9894-AFB95A8A6ED9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>7DFCF90F-545B-4395-8108-D78BF796C8F4</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>CDB582E9-97AC-4B89-AA66-272D123C134E</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>D497400F-AC64-480E-9894-AFB95A8A6ED9</key>
+		<dict>
+			<key>ypos</key>
+			<real>70</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://fatestigma.github.io</string>
+</dict>
+</plist>
